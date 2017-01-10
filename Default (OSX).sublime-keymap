@@ -1,0 +1,8 @@
+[
+    { "keys": ["super+g"], "command": "find_all_under" },
+    { "keys": ["ctrl+super+g"], "command": "find_next" },
+    { "keys": ["ctrl+super+x"], "command": "autoprefixer" },
+    { "keys": ["control+alt+k"]},
+    { "keys": ["control+alt+]"]},
+    { "keys": ["control+alt+["]}
+]

@@ -1,0 +1,16 @@
+{
+    "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+    "font_size": 17.0,
+    "highlight_line": true,
+    "ignored_packages":
+    [
+        "Pascal",
+        "Vintage"
+    ],
+    "material_theme_accent_blue": true,
+    "scroll_past_end": true,
+    "tab_size": 4,
+    "theme": "Material-Theme.sublime-theme",
+    "translate_tabs_to_spaces": true,
+    "word_wrap": true
+}
