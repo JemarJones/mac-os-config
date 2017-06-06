@@ -13,4 +13,7 @@ plugins=(git)
 # User configuration
 
 source $ZSH/oh-my-zsh.sh
+eval $(thefuck --alias FUCK)
 
+#Path
+export PATH=~/bin:$PATH
