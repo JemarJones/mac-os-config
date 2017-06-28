@@ -9,7 +9,7 @@
     ],
     "material_theme_accent_blue": true,
     "scroll_past_end": true,
-    "tab_size": 4,
+    "tab_size": 2,
     "theme": "Material-Theme-Palenight.sublime-theme",
     "translate_tabs_to_spaces": true,
     "word_wrap": true
