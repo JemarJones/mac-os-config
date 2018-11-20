@@ -19,3 +19,4 @@ eval $(thefuck --alias FUCK)
 export PATH="$(brew --prefix)/bin:$PATH" # go ahead and install git via brew beforehand
 export PATH="$(yarn global bin):$PATH" # this makes yarn global installs work
 export PATH=~/bin:$PATH
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
