@@ -13,7 +13,7 @@ plugins=(git)
 # User configuration
 
 source $ZSH/oh-my-zsh.sh
-eval $(thefuck --alias FUCK)
+eval $(thefuck --alias oops)
 
 #Path
 export PATH="$(brew --prefix)/bin:$PATH" # go ahead and install git via brew beforehand
