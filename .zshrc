@@ -1,4 +1,4 @@
-export PATH="$(brew --prefix git)/bin:$PATH" # go ahead and install git via brew beforehand
+export PATH="$(brew --prefix git)/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
