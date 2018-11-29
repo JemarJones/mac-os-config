@@ -14,6 +14,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias oops)
+# Autojump config
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 #Path
 export PATH="$(brew --prefix)/bin:$PATH" # go ahead and install git via brew beforehand
