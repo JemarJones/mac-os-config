@@ -12,6 +12,7 @@ echo "Installing applications with brew cask..."
 brew cask install google-chrome
 brew cask install visual-studio-code
 brew cask install alfred
+brew cask install shiftit
 brew cask install slack
 brew cask install spotify
 
