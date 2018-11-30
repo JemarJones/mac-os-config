@@ -1,10 +1,7 @@
 #!/bin/sh
 # This hasnt been tested yet.. good luck
 
-echo "Installing Xcode Tools..."
-xcode-select --install
-
-echo "Installing brew..."
+echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing applications with brew cask..."
