@@ -6,7 +6,6 @@ xcode-select --install
 
 echo "Installing brew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap caskroom/cask
 
 echo "Installing applications with brew cask..."
 brew cask install google-chrome
