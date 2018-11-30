@@ -1,7 +1,5 @@
 # mac-os-config
 
-Maybe add this to the setup script before you try it? https://github.com/lukechilds/zsh-nvm#manually
-
 Run `./setup.sh`
 
 ## VS Code
