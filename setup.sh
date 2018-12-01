@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Pretty info throughout the process
 print_info () {
@@ -18,6 +18,7 @@ cp_safe () {
 if [[ ! ($* == *--stage2*) ]] # If its not stage 2 its stage 1, hopefully..
 then
   # Stage 1 initiated by just running ./setup.sh
+  print_info "🚀🚀🚀 Alright.. sit back and enjoy the ride.. 🚀🚀🚀"
   print_info "Installing homebrew..."
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -39,7 +40,7 @@ then
   # Hopefully i can remove that one day..
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g')"
 
-  zsh -c "./test.sh --stage2"
+  zsh -c "./setup.sh --stage2"
   env zsh
 else
   # Stage 2,
@@ -57,9 +58,9 @@ else
     git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
   ) && \. "$NVM_DIR/nvm.sh"
 
-  nvm install node
-  nvm use node
-  nvm alias default node
+  nvm install --lts
+  nvm use --lts
+  nvm alias default lts/*
   brew install yarn --without-node
 
   source ~/.zshrc
@@ -71,6 +72,6 @@ else
   mkdir -p ~/Library/Application\ Support/Code/User/
   cp_safe ./config/syncLocalSettings.json ~/Library/Application\ Support/Code/User/syncLocalSettings.json
 
-  print_info "All done!"
+  print_info "🎉🎉🎉 All done!! 🎉🎉🎉"
   exit
 fi

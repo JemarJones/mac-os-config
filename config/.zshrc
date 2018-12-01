@@ -20,7 +20,6 @@ eval $(thefuck --alias oops)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 #Path
-export PATH="$PATH:`yarn global bin`" # this makes yarn global installs work
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 export NVM_DIR="$HOME/.nvm"
