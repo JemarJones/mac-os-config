@@ -1,4 +1,3 @@
-export PATH="$(brew --prefix git)/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -8,7 +7,10 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="doubleend"
 
-plugins=(git)
+plugins=(
+  git
+  autojump
+)
 
 # User configuration
 
@@ -18,10 +20,9 @@ eval $(thefuck --alias oops)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 #Path
-export PATH="$(brew --prefix)/bin:$PATH" # go ahead and install git via brew beforehand
-export PATH="$(yarn global bin):$PATH" # this makes yarn global installs work
-export PATH=~/bin:$PATH
+export PATH="$PATH:`yarn global bin`" # this makes yarn global installs work
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

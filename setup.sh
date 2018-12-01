@@ -16,28 +16,37 @@ echo "Installing CLI tools..."
 brew install thefuck
 brew install autojump
 
-echo "Setting up ZSH..."
+echo "Setting up Terminal..."
+# Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp ./doubleend.zsh-theme  ~/.oh-my-zsh/themes/
+# Setup zsh
+# Use the install command to copy instead of cp and set permissions correctly.
+# We need to do this because when we curl the git repo everything gets 755 which is no beuno
+install -m 644 ./config/doubleend.zsh-theme  ~/.oh-my-zsh/themes/
 echo "TODO: Figure out how to set .terminal theme programatically"
 # TODO: Figure out how to set .terminal theme programatically
-cp ./.zshrc ~/.zshrc
+install -m 644 ./config/.zshrc ~/.zshrc
+install -m 644 ./config/.vimrc ~/.vimrc
 
-echo "Installing nvm..."
+echo "Installing node..."
 export NVM_DIR="$HOME/.nvm" && (
   git clone https://github.com/creationix/nvm.git "$NVM_DIR"
   cd "$NVM_DIR"
   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
 ) && \. "$NVM_DIR/nvm.sh"
 
-echo "Reloading ~/.zshrc..."
-source ~/.zshrc
-
-echo "Installing node..."
 nvm install node
 nvm use node
 nvm alias default node
+brew install yarn --without-node
+
+source ~/.zshrc
+
+echo "Finishing touches..."
+code --install-extension Shan.code-settings-sync
+
+mkdir -p ~/Documents/Projects
 
 echo "All done!"
-echo "PS: Remember to get the VS Code Sync Settings Extension and sync with https://gist.github.com/JemarJones/2ad56fe8690d0f3126948e70bef65c65"
+echo "PS: Remember to sync vs code with https://gist.github.com/JemarJones/2ad56fe8690d0f3126948e70bef65c65"
 
