@@ -1,52 +1,71 @@
 #!/bin/sh
-# This hasnt been tested yet.. good luck
 
-echo "Installing homebrew..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Pretty info throughout the process
+print_info () {
+  printf "\e[32m=======> $1 <=======\e[m\n"
+}
 
-echo "Installing applications with brew cask..."
-brew cask install google-chrome
-brew cask install visual-studio-code
-brew cask install alfred
-brew cask install shiftit
-brew cask install slack
-brew cask install spotify
-
-echo "Installing CLI tools..."
-brew install thefuck
-brew install autojump
-
-echo "Setting up Terminal..."
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# Setup zsh
 # Use the install command to copy instead of cp and set permissions correctly.
 # We need to do this because when we curl the git repo everything gets 755 which is no beuno
-install -m 644 ./config/doubleend.zsh-theme  ~/.oh-my-zsh/themes/
-echo "TODO: Figure out how to set .terminal theme programatically"
-# TODO: Figure out how to set .terminal theme programatically
-install -m 644 ./config/.zshrc ~/.zshrc
-install -m 644 ./config/.vimrc ~/.vimrc
+cp_safe () {
+  install -m 644 $1 $2
+}
 
-echo "Installing node..."
-export NVM_DIR="$HOME/.nvm" && (
-  git clone https://github.com/creationix/nvm.git "$NVM_DIR"
-  cd "$NVM_DIR"
-  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-) && \. "$NVM_DIR/nvm.sh"
+if [[ !($* == *--stage2*) ]] # If its not stage 2 its stage 1, hopefully..
+then
+  # Stage 1 initiated by just running ./setup.sh
+  print_info "Installing homebrew..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-nvm install node
-nvm use node
-nvm alias default node
-brew install yarn --without-node
+  print_info "Installing applications with brew cask..."
+  brew cask install google-chrome
+  brew cask install visual-studio-code
+  brew cask install alfred
+  brew cask install shiftit
+  brew cask install slack
+  brew cask install spotify
 
-source ~/.zshrc
+  print_info "Installing CLI tools..."
+  brew install thefuck
+  brew install autojump
 
-echo "Finishing touches..."
-code --install-extension Shan.code-settings-sync
+  print_info "Setting up Terminal..."
+  # Install oh-my-zsh
+  # Note! We're sed-ing to remove `env zsh -l` from the oh-my-zsh start script so we can keep running..
+  # Hopefully i can remove that one day..
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g')"
 
-mkdir -p ~/Documents/Projects
+  zsh -c "./test.sh --stage2"
+  env zsh
+else
+  # Stage 2,
+  # Setup zsh
+  cp_safe ./config/doubleend.zsh-theme  ~/.oh-my-zsh/themes/
+  print_info "TODO: Figure out how to set .terminal theme programatically"
+  # TODO: Figure out how to set .terminal theme programatically
+  cp_safe ./config/.zshrc ~/.zshrc
+  cp_safe ./config/.vimrc ~/.vimrc
 
-echo "All done!"
-echo "PS: Remember to sync vs code with https://gist.github.com/JemarJones/2ad56fe8690d0f3126948e70bef65c65"
+  print_info "Installing node..."
+  export NVM_DIR="$HOME/.nvm" && (
+    git clone https://github.com/creationix/nvm.git "$NVM_DIR"
+    cd "$NVM_DIR"
+    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+  ) && \. "$NVM_DIR/nvm.sh"
 
+  nvm install node
+  nvm use node
+  nvm alias default node
+  brew install yarn --without-node
+
+  source ~/.zshrc
+
+  print_info "Finishing touches..."
+  code --install-extension Shan.code-settings-sync
+
+  mkdir -p ~/Documents/Projects
+
+  print_info "All done!"
+  print_info "PS: Remember to sync vs code with https://gist.github.com/JemarJones/2ad56fe8690d0f3126948e70bef65c65"
+  exit
+fi
