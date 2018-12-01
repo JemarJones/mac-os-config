@@ -5,6 +5,10 @@ print_info () {
   printf "\e[32m=======> $1 <=======\e[m\n"
 }
 
+print_warning () {
+  printf "\e[33m=======> $1 <=======\e[m\n"
+}
+
 # Use the install command to copy instead of cp and set permissions correctly.
 # We need to do this because when we curl the git repo everything gets 755 which is no beuno
 cp_safe () {
@@ -41,7 +45,7 @@ else
   # Stage 2,
   # Setup zsh
   cp_safe ./config/doubleend.zsh-theme  ~/.oh-my-zsh/themes/
-  print_info "TODO: Figure out how to set .terminal theme programatically"
+  print_warning "TODO: Figure out how to set .terminal theme programatically"
   # TODO: Figure out how to set .terminal theme programatically
   cp_safe ./config/.zshrc ~/.zshrc
   cp_safe ./config/.vimrc ~/.vimrc
