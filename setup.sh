@@ -82,6 +82,7 @@ else
   mkdir -p ~/Library/Application\ Support/Code/User/
   cp_safe ./config/syncLocalSettings.json ~/Library/Application\ Support/Code/User/syncLocalSettings.json
 
+  print_info "PS: Remember to restart Terminal completely for your theme to take effect."
   print_info "🎉🎉🎉 All done!! 🎉🎉🎉"
   exit
 fi
