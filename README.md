@@ -1,4 +1,4 @@
-# mac-os-config
+# Mac OS Config
 
 ## Just run this command:
 
