@@ -2,20 +2,20 @@
 
 # Pretty info throughout the process
 print_info () {
-  printf "\e[32m=======> $1 <=======\e[m\n"
+  printf "\e[32m=======> %s <=======\e[m\n" "$1"
 }
 
 print_warning () {
-  printf "\e[33m=======> $1 <=======\e[m\n"
+  printf "\e[33m=======> %s <=======\e[m\n" "$1"
 }
 
 # Use the install command to copy instead of cp and set permissions correctly.
 # We need to do this because when we curl the git repo everything gets 755 which is no beuno
 cp_safe () {
-  install -m 644 $1 $2
+  install -m 644 "$1" "$2"
 }
 
-if [[ !($* == *--stage2*) ]] # If its not stage 2 its stage 1, hopefully..
+if [[ ! ($* == *--stage2*) ]] # If its not stage 2 its stage 1, hopefully..
 then
   # Stage 1 initiated by just running ./setup.sh
   print_info "Installing homebrew..."
