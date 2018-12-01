@@ -65,11 +65,12 @@ else
   source ~/.zshrc
 
   print_info "Finishing touches..."
-  code --install-extension Shan.code-settings-sync
-
   mkdir -p ~/Documents/Projects
 
+  code --install-extension Shan.code-settings-sync
+  mkdir -p ~/Library/Application\ Support/Code/User/
+  cp_safe ./config/syncLocalSettings.json ~/Library/Application\ Support/Code/User/syncLocalSettings.json
+
   print_info "All done!"
-  print_info "PS: Remember to sync vs code with https://gist.github.com/JemarJones/2ad56fe8690d0f3126948e70bef65c65"
   exit
 fi
