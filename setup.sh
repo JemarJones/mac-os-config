@@ -34,6 +34,11 @@ then
   brew install thefuck
   brew install autojump
 
+  print_info "Setting up Dock"
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock orientation right
+  killall Dock
+
   print_info "Setting up Terminal..."
   # Install oh-my-zsh
   # Note! We're sed-ing to remove `env zsh -l` from the oh-my-zsh start script so we can keep running..
@@ -46,10 +51,14 @@ else
   # Stage 2,
   # Setup zsh
   cp_safe ./config/doubleend.zsh-theme  ~/.oh-my-zsh/themes/
-  print_warning "TODO: Figure out how to set .terminal theme programatically"
-  # TODO: Figure out how to set .terminal theme programatically
   cp_safe ./config/.zshrc ~/.zshrc
   cp_safe ./config/.vimrc ~/.vimrc
+
+  # Set the terminal theme
+  theme=$(<config/MaterialTheme.xml)
+  plutil -replace Window\ Settings.Material-Theme -xml "$theme" ~/Library/Preferences/com.apple.Terminal.plist
+  defaults write com.apple.Terminal "Default Window Settings" -string "Material-Theme"
+  defaults write com.apple.Terminal "Startup Window Settings" -string "Material-Theme"
 
   print_info "Installing node..."
   export NVM_DIR="$HOME/.nvm" && (
