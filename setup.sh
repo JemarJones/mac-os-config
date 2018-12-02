@@ -33,6 +33,7 @@ then
   print_info "Installing CLI tools..."
   brew install thefuck
   brew install autojump
+  brew install the_silver_searcher
 
   print_info "Setting up Dock"
   defaults write com.apple.dock autohide -bool true
