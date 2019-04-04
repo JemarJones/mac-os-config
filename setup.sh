@@ -25,6 +25,7 @@ then
   print_info "Installing applications with brew cask..."
   brew cask install google-chrome
   brew cask install visual-studio-code
+  brew cask install postman
   brew cask install alfred
   brew cask install shiftit
   brew cask install slack
