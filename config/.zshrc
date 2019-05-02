@@ -16,6 +16,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias oops)
+eval $(thefuck --alias fuck)
 # Autojump config
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
