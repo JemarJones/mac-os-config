@@ -56,9 +56,11 @@ else
   cp_safe ./config/.zshrc ~/.zshrc
   cp_safe ./config/.vimrc ~/.vimrc
 
-  # Set the terminal theme
+  # Add terminal themes and set the default
   theme=$(<config/MaterialTheme.xml)
   plutil -replace Window\ Settings.Material-Theme -xml "$theme" ~/Library/Preferences/com.apple.Terminal.plist
+  theme=$(<config/Danger-Theme.xml)
+  plutil -replace Window\ Settings.Danger-Theme -xml "$theme" ~/Library/Preferences/com.apple.Terminal.plist
   defaults write com.apple.Terminal "Default Window Settings" -string "Material-Theme"
   defaults write com.apple.Terminal "Startup Window Settings" -string "Material-Theme"
   defaults write com.apple.Terminal "NSWindow Frame TTWindow Material-Theme" -string "0 327 640 450 0 0 1280 777 "
