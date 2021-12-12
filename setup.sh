@@ -26,6 +26,7 @@ then
   brew install --cask google-chrome
   brew install --cask visual-studio-code
   brew install --cask postman
+  brew install --cask dbeaver-community
   brew install --cask alfred
   brew install --cask rectangle
   brew install --cask slack
