@@ -20,6 +20,7 @@ eval $(thefuck --alias fuck)
 # Autojump config
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 alias incognito="echo 'Entering incognito mode now. Command history will not be recorded.'; unset HISTFILE; echo 'tell application \"Terminal\" to set current settings of first window to settings set \"Danger-Theme\"' | osascript"
+export EDITOR="code -w" # Setting VS Code as the default editor
 
 #Path
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
