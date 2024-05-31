@@ -24,12 +24,15 @@ then
 
   print_info "Installing applications with brew cask..."
   brew install --cask google-chrome
+  brew install --cask firefox
+  brew install --cask 1password
   brew install --cask visual-studio-code
   brew install --cask postman
   brew install --cask dbeaver-community
   brew install --cask alfred
   brew install --cask rectangle
   brew install --cask slack
+  brew install --cask beeper
   brew install --cask spotify
 
   print_info "Installing CLI tools..."
